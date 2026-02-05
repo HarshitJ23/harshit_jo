@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -81,4 +81,33 @@
   </script>
 
 </body>
-</html>
+</html> -->
+
+<script>
+  const noBtn = document.getElementById("no");
+  const container = document.querySelector(".buttons");
+
+  let x = 0;
+  let y = 0;
+
+  function moveNoButton() {
+    const containerRect = container.getBoundingClientRect();
+
+    const maxX = containerRect.width / 2;
+    const maxY = containerRect.height / 2;
+
+    x = (Math.random() - 0.5) * maxX * 1.5;
+    y = (Math.random() - 0.5) * maxY * 1.5;
+
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+  }
+
+  // Desktop (hover)
+  noBtn.addEventListener("mouseenter", moveNoButton);
+
+  // Mobile (tap)
+  noBtn.addEventListener("touchstart", (e) => {
+    e.preventDefault(); // stop click
+    moveNoButton();
+  });
+</script>
