@@ -83,7 +83,7 @@
 </body>
 </html> -->
 
-<script>
+<!-- <script>
   const noBtn = document.getElementById("no");
   const container = document.querySelector(".buttons");
 
@@ -110,4 +110,145 @@
     e.preventDefault(); // stop click
     moveNoButton();
   });
-</script>
+</script> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hey You ❤️</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: "Segoe UI", sans-serif;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      color: #fff;
+      font-size: 2.2rem;
+      margin-bottom: 40px;
+      padding: 0 16px;
+    }
+
+    .buttons {
+      position: relative;
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      justify-content: center;
+      height: 120px;
+    }
+
+    button {
+      padding: 14px 34px;
+      font-size: 18px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    #yes {
+      background-color: #28a745;
+      position: relative;
+    }
+
+    #yes:hover {
+      transform: scale(1.08);
+    }
+
+    #no {
+      background-color: #dc3545;
+      position: absolute;
+      transition: transform 0.18s ease-out;
+      touch-action: manipulation;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div>
+    <h1>Will you be my Valentine? 💖✨</h1>
+
+    <div class="buttons">
+      <button id="no">No 💔</button>
+      <button id="yes" onclick="yesClicked()">Yes 💘</button>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("no");
+    const container = document.querySelector(".buttons");
+
+    let x = 0;
+    let y = 0;
+
+    function moveNoButton() {
+      const rect = container.getBoundingClientRect();
+
+      const maxX = rect.width / 2;
+      const maxY = rect.height / 2;
+
+      x = (Math.random() - 0.5) * maxX * 1.6;
+      y = (Math.random() - 0.5) * maxY * 1.6;
+
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    // Desktop hover
+    noBtn.addEventListener("mouseenter", moveNoButton);
+
+    // Mobile tap
+    noBtn.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      moveNoButton();
+    });
+
+    function yesClicked() {
+      document.body.innerHTML = `
+        <div style="
+          height:100vh;
+          display:flex;
+          flex-direction:column;
+          justify-content:center;
+          align-items:center;
+          background:linear-gradient(135deg, #ff9a9e, #fad0c4);
+          color:white;
+          text-align:center;
+          padding:24px;
+        ">
+          <h1 style="font-size:2.4rem;">Yayyyy!! 🥰🎉</h1>
+          <p style="font-size:1.3rem;max-width:420px;">
+            You just made my day ❤️<br/>
+            Can’t wait to celebrate this Valentine with you 😌✨
+          </p>
+        </div>
+      `;
+    }
+  </script>
+
+</body>
+</html>
+
+
